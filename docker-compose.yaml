@@ -1,0 +1,15 @@
+services:
+    cr:
+        public: true
+        container_name: dreve
+        image: jialezi/cloudreve
+        ports:
+            - 5212:5212
+        volumes:
+            - /root/cloudreve
+        command:  
+            - /bin/sh
+            - -c
+            - |
+              sed -i s/'$(date +%s%N | md5sum | head -c 20)'/123123/g /run.sh
+              /run.sh
